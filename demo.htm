@@ -1,0 +1,61 @@
+<!doctype html>
+<head>
+	<meta charset="utf-8">
+	<title>Table sort demo</title>
+
+	<style>
+
+	</style>
+
+	<link rel="stylesheet" href="tablesort.css">
+
+<body>
+	<h1>Table sort demo</h1>	
+
+	<h2>Sortable columns</h2>
+
+	<table class="sortable">
+		<thead>
+			<tr>
+				<th>String
+				<th>Number
+				<th>Date (ddmmyyyy)
+				<th>Date (mmddyyyy)
+				<th>Date (dmmmy)
+				<th>Date (mmmdy)
+				<th>Date (iso)
+		</thead>
+		<tbody>
+			<tr>
+				<td>
+				<td>
+				<td>
+				<td>
+				<td>
+				<td>
+				<td>
+		</tbody>
+
+	</table>
+
+	<h2>Filtered columns</h2>
+
+
+	<h2>Custom sorting</h2>
+
+
+	<h2>Other stuff to test</h2>
+	<ul>
+		<li>Automatic creation of a thead
+		<li>Complex thead
+		<li>Mulitple tbody
+		<li>tfoot
+		<li>Complex cell content
+	</ul>
+
+
+	<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+	<script src="tablesort.js"></script>
+	<script>
+		$('.sortable').tablesort();
+	</script>

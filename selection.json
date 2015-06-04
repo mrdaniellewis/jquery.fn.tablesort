@@ -1,0 +1,164 @@
+{
+	"IcoMoonType": "selection",
+	"icons": [
+		{
+			"icon": {
+				"paths": [
+					"M658.286 475.429q0-105.714-75.143-180.857t-180.857-75.143-180.857 75.143-75.143 180.857 75.143 180.857 180.857 75.143 180.857-75.143 75.143-180.857zM950.857 950.857q0 29.714-21.714 51.429t-51.429 21.714q-30.857 0-51.429-21.714l-196-195.429q-102.286 70.857-228 70.857-81.714 0-156.286-31.714t-128.571-85.714-85.714-128.571-31.714-156.286 31.714-156.286 85.714-128.571 128.571-85.714 156.286-31.714 156.286 31.714 128.571 85.714 85.714 128.571 31.714 156.286q0 125.714-70.857 228l196 196q21.143 21.143 21.143 51.429z"
+				],
+				"width": 951,
+				"attrs": [],
+				"isMulticolor": false,
+				"tags": [
+					"search"
+				],
+				"defaultCode": 61442,
+				"grid": 14
+			},
+			"attrs": [],
+			"properties": {
+				"id": 2,
+				"order": 35,
+				"prevSize": 28,
+				"code": 61442,
+				"name": "search"
+			},
+			"setIdx": 11,
+			"setId": 6,
+			"iconIdx": 2
+		},
+		{
+			"icon": {
+				"paths": [
+					"M585.143 621.714q0 14.857-10.857 25.714l-256 256q-10.857 10.857-25.714 10.857t-25.714-10.857l-256-256q-10.857-10.857-10.857-25.714t10.857-25.714 25.714-10.857h512q14.857 0 25.714 10.857t10.857 25.714zM585.143 402.286q0 14.857-10.857 25.714t-25.714 10.857h-512q-14.857 0-25.714-10.857t-10.857-25.714 10.857-25.714l256-256q10.857-10.857 25.714-10.857t25.714 10.857l256 256q10.857 10.857 10.857 25.714z"
+				],
+				"width": 585,
+				"attrs": [],
+				"isMulticolor": false,
+				"tags": [
+					"sort",
+					"unsorted"
+				],
+				"defaultCode": 61660,
+				"grid": 14
+			},
+			"attrs": [],
+			"properties": {
+				"id": 195,
+				"order": 32,
+				"prevSize": 28,
+				"code": 8597,
+				"name": "sort"
+			},
+			"setIdx": 11,
+			"setId": 6,
+			"iconIdx": 195
+		},
+		{
+			"icon": {
+				"paths": [
+					"M585.143 621.714q0 14.857-10.857 25.714l-256 256q-10.857 10.857-25.714 10.857t-25.714-10.857l-256-256q-10.857-10.857-10.857-25.714t10.857-25.714 25.714-10.857h512q14.857 0 25.714 10.857t10.857 25.714z"
+				],
+				"width": 585,
+				"attrs": [],
+				"isMulticolor": false,
+				"tags": [
+					"sort-desc",
+					"sort-down"
+				],
+				"defaultCode": 61661,
+				"grid": 14
+			},
+			"attrs": [],
+			"properties": {
+				"id": 196,
+				"order": 33,
+				"prevSize": 28,
+				"code": 8595,
+				"name": "sort-desc"
+			},
+			"setIdx": 11,
+			"setId": 6,
+			"iconIdx": 196
+		},
+		{
+			"icon": {
+				"paths": [
+					"M585.143 402.286q0 14.857-10.857 25.714t-25.714 10.857h-512q-14.857 0-25.714-10.857t-10.857-25.714 10.857-25.714l256-256q10.857-10.857 25.714-10.857t25.714 10.857l256 256q10.857 10.857 10.857 25.714z"
+				],
+				"width": 585,
+				"attrs": [],
+				"isMulticolor": false,
+				"tags": [
+					"sort-asc",
+					"sort-up"
+				],
+				"defaultCode": 61662,
+				"grid": 14
+			},
+			"attrs": [],
+			"properties": {
+				"id": 197,
+				"order": 34,
+				"prevSize": 28,
+				"code": 8593,
+				"name": "sort-asc"
+			},
+			"setIdx": 11,
+			"setId": 6,
+			"iconIdx": 197
+		}
+	],
+	"height": 1024,
+	"metadata": {
+		"name": "icomoon"
+	},
+	"preferences": {
+		"fontPref": {
+			"prefix": "icon-",
+			"metadata": {
+				"fontFamily": "icomoon",
+				"majorVersion": 1,
+				"minorVersion": 0,
+				"description": "Citizens Advice"
+			},
+			"showGlyphs": true,
+			"metrics": {
+				"emSize": 1024,
+				"baseline": 6.25,
+				"whitespace": 50
+			},
+			"resetPoint": 58880,
+			"showQuickUse": true,
+			"quickUsageToken": false,
+			"showMetrics": true,
+			"showMetadata": true,
+			"ie7": false,
+			"showSelector": true,
+			"showVersion": true,
+			"selector": "",
+			"embed": true,
+			"classSelector": ".icon"
+		},
+		"imagePref": {
+			"color": 0,
+			"height": 16,
+			"columns": 16,
+			"margin": 16,
+			"png": true,
+			"sprites": true,
+			"prefix": "icon-",
+			"overrideSize": true
+		},
+		"historySize": 100,
+		"showCodes": true,
+		"gridSize": 16,
+		"showLiga": false,
+		"showGrid": true,
+		"showGlyphs": true,
+		"showQuickUse": true,
+		"showQuickUse2": true,
+		"showSVGs": true,
+		"search": ""
+	}
+}
