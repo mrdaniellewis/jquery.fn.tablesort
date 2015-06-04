@@ -23,6 +23,8 @@
     var fromCharCode = String.fromCharCode;
     var guid = 0;
 
+    var rComma = /\s*,\s*/;
+
     var defaultSortFns = {
         /** Numberical stable sort */
         num: function (n, m) {
@@ -41,6 +43,10 @@
         /** Field contains search */
         has: function (key, text) {
             return key.indexOf(text.toLowerCase()) > -1;
+        },
+        /** Item is in a comma separated list */
+        inList: function(key, text) {
+            return text.toLowerCase().split(rComma).indexOf(key) > -1;
         },
         /** Field contains each space separated token */
         hasEach: function (key, text) {
@@ -333,9 +339,12 @@
                     }
 
                     var filterFn, filterKeyGen;
-                    if (attr(th, 'select')) {
-                        $th.append('<span class="' + NAMESPACE + '-span-filter">' + createSelectFilter(table, cellIndex) + '</span>');
-                        settings['filter-fn'] = 'exact';
+                    var selectFilter = attr(th, 'select');
+                    if (selectFilter) {
+                        var multiple = selectFilter === 'multiple';
+                        // If a delimiter is supplied that a cell can contain multiple items for the select
+                        $th.append('<span class="' + NAMESPACE + '-span-filter">' + createSelectFilter(table, cellIndex, multiple ) + '</span>');
+                        settings['filter-fn'] = multiple ? 'inList' : 'exact' ;
                         settings['filter-keygen'] = 'text';
                     }
 
@@ -571,7 +580,7 @@
     /**
      *  Create a select filter for a column.
      */
-    function createSelectFilter(table, cellIndex) {
+    function createSelectFilter(table, cellIndex, multiple) {
         var i, j;
         var values = {};
         var valuesAr = [];
@@ -579,7 +588,7 @@
         var tbodies = table.tBodies;
 
         for (i = 0, j = tbodies.length; i < j; ++i) {
-            $.extend(values, searchTBodies(tbodies[i], cellIndex));
+            $.extend(values, searchTBodies(tbodies[i], cellIndex, multiple));
         }
 
         for (i in values) {
@@ -600,10 +609,22 @@
     /**
      *  Find values for the select filter
      */
-    function searchTBodies(tbody, cellIndex) {
-        var i, j, values = {}, rows = tbody.rows;
+    function searchTBodies(tbody, cellIndex, multiple) {
+        var i, j, value;
+        var values = {};
+        var rows = tbody.rows;
+
+        function addValue(value) {
+            values[value] = true;
+        }
+
         for (i = 0, j = rows.length; i < j; ++i) {
-            values[$.text(rows[i].cells[cellIndex] || '')] = true;
+            value = $.text(rows[i].cells[cellIndex] || '');
+            if ( multiple ) {
+                value.split(rComma).forEach(addValue);
+            } else {
+               addValue(value);
+            }
         }
 
         return values;
