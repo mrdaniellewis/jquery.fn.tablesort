@@ -1,7 +1,7 @@
 /* jshint jquery: true, browser: true, undef: true */
 
 /**
- *	jQuery.fn.tablesort
+ *  jQuery.fn.tablesort
  *
  *  @requires jQuery
  *  @requires Date parses JSON format - use https://github.com/es-shims/es5-shim for old browsers
@@ -166,53 +166,53 @@
     }
 
     var tests = [
-		function (cells) {
-		    if (every(cells, function (data) {
-				var match = data[0].match(rDateMonthYear);
-				return match && +match[1] < 31 && monthNames[match[2]] >= 0;
-		    })) {
-		        return 'dmmmy';
-		    }
-		},
-		function (cells) {
-		    if (every(cells, function (data) {
-				var match = data[0].match(rMonthDateYear);
-				return match && +match[1] < 31 && monthNames[match[2]] >= 0;
-		    })) {
-		        return 'mmmdy';
-		    }
-		},
-		function (cells) {
-		    if (every(cells, function (data) {
-				return rISODate.test(data[0]);
-		    })) {
-		        return 'isodate';
-		    }
-		},
-		function (cells) {
-		    if (every(cells, function (data) {
-				var match = data[0].match(rDate);
-				return match && +match[1] < 32 && +match[3] < 13;
-		    })) {
-		        return 'ddmmyy';
-		    }
-		},
-		function (cells) {
-		    if (every(cells, function (data) {
-				var match = data[0].match(rDate);
-				return match && +match[1] < 13 && +match[3] < 32;
-		    })) {
-		        return 'mmddyy';
-		    }
-		},
-		// Run last
-		function (cells) {
-		    if (every(cells, function (data) {
-				return rNumber.test(data[0]);
-		    })) {
-		        return 'num';
-		    }
-		}
+        function (cells) {
+            if (every(cells, function (data) {
+                var match = data[0].match(rDateMonthYear);
+                return match && +match[1] < 31 && monthNames[match[2]] >= 0;
+            })) {
+                return 'dmmmy';
+            }
+        },
+        function (cells) {
+            if (every(cells, function (data) {
+                var match = data[0].match(rMonthDateYear);
+                return match && +match[1] < 31 && monthNames[match[2]] >= 0;
+            })) {
+                return 'mmmdy';
+            }
+        },
+        function (cells) {
+            if (every(cells, function (data) {
+                return rISODate.test(data[0]);
+            })) {
+                return 'isodate';
+            }
+        },
+        function (cells) {
+            if (every(cells, function (data) {
+                var match = data[0].match(rDate);
+                return match && +match[1] < 32 && +match[3] < 13;
+            })) {
+                return 'ddmmyy';
+            }
+        },
+        function (cells) {
+            if (every(cells, function (data) {
+                var match = data[0].match(rDate);
+                return match && +match[1] < 13 && +match[3] < 32;
+            })) {
+                return 'mmddyy';
+            }
+        },
+        // Run last
+        function (cells) {
+            if (every(cells, function (data) {
+                return rNumber.test(data[0]);
+            })) {
+                return 'num';
+            }
+        }
     ];
 
     var types = {
@@ -262,10 +262,10 @@
 
             if (data) {
                 $table
-					.removeClass(SORTABLECLASS)
-					.find('tbody').add(table)
-						.off(DOTNAMESPACE)
-						.removeData(NAMESPACE);
+                    .removeClass(SORTABLECLASS)
+                    .find('tbody').add(table)
+                        .off(DOTNAMESPACE)
+                        .removeData(NAMESPACE);
 
                 $table.find('thead .' + WRAPCLASS).each(function () {
                     $(this).replaceWith(this.childNodes);
@@ -312,50 +312,50 @@
 
             // Add supporting elements to cells
             $thead
-				.find('th')
-				.each(function () {
-				    var th = this;
-				    var $th = $(th);
-				    var cellIndex = attr(th, 'index');
-				    var settings = {};
-				    if (cellIndex === false) {
-				        cellIndex = th.cellIndex;
-				    }
+                .find('th')
+                .each(function () {
+                    var th = this;
+                    var $th = $(th);
+                    var cellIndex = attr(th, 'index');
+                    var settings = {};
+                    if (cellIndex === false) {
+                        cellIndex = th.cellIndex;
+                    }
 
-				    // Check sorting isn't disabled
-				    if (!attr(th, 'nosort')) {
-				        $th.wrapInner($('<div class="' + WRAPCLASS + '"/>')).children().append(defaultButton);
-				        setButtonTitles($th, !attr(th, 'reverse'));
+                    // Check sorting isn't disabled
+                    if (!attr(th, 'nosort')) {
+                        $th.wrapInner($('<div class="' + WRAPCLASS + '"/>')).children().append(defaultButton);
+                        setButtonTitles($th, !attr(th, 'reverse'));
 
-				        var sortType = attr(th, 'type') || guessSortType(table, cellIndex);
+                        var sortType = attr(th, 'type') || guessSortType(table, cellIndex);
 
-				        $.extend(settings, types[sortType]);
-				    }
+                        $.extend(settings, types[sortType]);
+                    }
 
-				    var filterFn, filterKeyGen;
-				    if (attr(th, 'select')) {
-				        $th.append('<span class="' + NAMESPACE + '-span-filter">' + createSelectFilter(table, cellIndex) + '</span>');
-				        settings['filter-fn'] = 'exact';
-				        settings['filter-keygen'] = 'text';
-				    }
+                    var filterFn, filterKeyGen;
+                    if (attr(th, 'select')) {
+                        $th.append('<span class="' + NAMESPACE + '-span-filter">' + createSelectFilter(table, cellIndex) + '</span>');
+                        settings['filter-fn'] = 'exact';
+                        settings['filter-keygen'] = 'text';
+                    }
 
-				    if (attr(th, 'filter')) {
-				        $th.append('<span class="' + NAMESPACE + '-span-filter"><input type="search" class="' + NAMESPACE + '-filter" title="' + labels.search + '"></span>');
-				        settings['filter-fn'] = 'has';
-				        settings['filter-keygen'] = 'text';
-				    }
+                    if (attr(th, 'filter')) {
+                        $th.append('<span class="' + NAMESPACE + '-span-filter"><input type="search" class="' + NAMESPACE + '-filter" title="' + labels.search + '"></span>');
+                        settings['filter-fn'] = 'has';
+                        settings['filter-keygen'] = 'text';
+                    }
 
-				    if (dynamic) {
-				        settings.dynamic = true;
-				    }
+                    if (dynamic) {
+                        settings.dynamic = true;
+                    }
 
-				    for (var i in settings) {
-				        if (!$.isFunction(settings[i])) {
-				            attr(th, i, settings[i]);
-				        }
-				    }
+                    for (var i in settings) {
+                        if (!$.isFunction(settings[i])) {
+                            attr(th, i, settings[i]);
+                        }
+                    }
 
-				});
+                });
 
             // Add col to keep the columns even
             if (options.maintainWidth !== false && !$table.find('col').length) {
@@ -369,89 +369,89 @@
             }
 
             $table
-				.on('click.' + NAMESPACE, 'th', function (e) {
-				    var $target = $(e.target);
+                .on('click.' + NAMESPACE, 'th', function (e) {
+                    var $target = $(e.target);
 
-				    // Do not run if the user clicks an interactive element we didn't put there
-				    if ($target.is('.' + BUTTONCLASS) || !$target.is('a,a *,button,button *,input,select,select *,textarea')) {
+                    // Do not run if the user clicks an interactive element we didn't put there
+                    if ($target.is('.' + BUTTONCLASS) || !$target.is('a,a *,button,button *,input,select,select *,textarea')) {
 
-				        $target = $(this);
-				        var i, j;
-				        if (!$target.is('th')) {
-				            $target = $target.closest('th');
-				        }
-				        var th = $target[0];
+                        $target = $(this);
+                        var i, j;
+                        if (!$target.is('th')) {
+                            $target = $target.closest('th');
+                        }
+                        var th = $target[0];
 
-				        if (attr(th, 'nosort')) {
-				            return;
-				        }
+                        if (attr(th, 'nosort')) {
+                            return;
+                        }
 
-				        var sortFn = sortFns[attr(th, 'fn')];
-				        var keyGen = keyGens[attr(th, 'keygen')];
-				        var reverse = attr(th, 'reverse');
-				        var dir = reverse;
-				        var skipCache = attr(th, 'dynamic');
-				        var cellIndex = attr(th, 'index') || th.cellIndex;
+                        var sortFn = sortFns[attr(th, 'fn')];
+                        var keyGen = keyGens[attr(th, 'keygen')];
+                        var reverse = attr(th, 'reverse');
+                        var dir = reverse;
+                        var skipCache = attr(th, 'dynamic');
+                        var cellIndex = attr(th, 'index') || th.cellIndex;
 
-				        if ($target.hasClass(NAMESPACE + '-asc')) {
-				            dir = !dir;
-				        }
+                        if ($target.hasClass(NAMESPACE + '-asc')) {
+                            dir = !dir;
+                        }
 
-				        $table.trigger('sort', [{
-				            cellIndex: cellIndex,
-				            sortFn: sortFn,
-				            keyGen: keyGen,
-				            reverse: dir,
-				            skipCache: skipCache
-				        }]);
+                        $table.trigger('sort', [{
+                            cellIndex: cellIndex,
+                            sortFn: sortFn,
+                            keyGen: keyGen,
+                            reverse: dir,
+                            skipCache: skipCache
+                        }]);
 
-				        if (reverse) {
-				            dir = !dir;
-				        }
+                        if (reverse) {
+                            dir = !dir;
+                        }
 
-				        $target
-							.toggleClass(NAMESPACE + '-asc', !dir)
-							.toggleClass(NAMESPACE + '-desc', dir);
+                        $target
+                            .toggleClass(NAMESPACE + '-asc', !dir)
+                            .toggleClass(NAMESPACE + '-desc', dir);
 
-				        setButtonTitles($target, dir);
-				    }
-
-
-				})
-				.on('input.' + NAMESPACE, '.' + NAMESPACE + '-filter', function (e) {
-				    // debounce
-				    var that = this;
-				    window.clearTimeout(this[NAMESPACE + 'Timeout']);
-				    this[NAMESPACE + 'Timeout'] = window.setTimeout(function () {
-				        $(that).trigger('change.' + NAMESPACE);
-				    }, 100);
-				})
-				.on('change.' + NAMESPACE, '.' + NAMESPACE + '-filter', function (e) {
-				    var $target = $(this);
-				    var $this = $target;
-				    var i, j;
-				    if (!$target.is('th')) {
-				        $target = $target.closest('th');
-				    }
-				    var th = $target[0];
-
-				    var filterFn = filterFns[attr(th, 'filter-fn')];
-				    var keyGen = keyGens[attr(th, 'filter-keygen')];
-				    var skipCache = attr(th, 'dynamic') !== null;
-				    var text = $this.val();
-				    var cellIndex = attr(th, 'index') || th.cellIndex;
+                        setButtonTitles($target, dir);
+                    }
 
 
-				    $table.trigger('filter', [{
-				        cellIndex: cellIndex,
-				        clear: !text,
-				        text: text,
-				        filterFn: filterFn,
-				        keyGen: keyGen,
-				        skipCache: skipCache
-				    }]);
+                })
+                .on('input.' + NAMESPACE, '.' + NAMESPACE + '-filter', function (e) {
+                    // debounce
+                    var that = this;
+                    window.clearTimeout(this[NAMESPACE + 'Timeout']);
+                    this[NAMESPACE + 'Timeout'] = window.setTimeout(function () {
+                        $(that).trigger('change.' + NAMESPACE);
+                    }, 100);
+                })
+                .on('change.' + NAMESPACE, '.' + NAMESPACE + '-filter', function (e) {
+                    var $target = $(this);
+                    var $this = $target;
+                    var i, j;
+                    if (!$target.is('th')) {
+                        $target = $target.closest('th');
+                    }
+                    var th = $target[0];
 
-				});
+                    var filterFn = filterFns[attr(th, 'filter-fn')];
+                    var keyGen = keyGens[attr(th, 'filter-keygen')];
+                    var skipCache = attr(th, 'dynamic') !== null;
+                    var text = $this.val();
+                    var cellIndex = attr(th, 'index') || th.cellIndex;
+
+
+                    $table.trigger('filter', [{
+                        cellIndex: cellIndex,
+                        clear: !text,
+                        text: text,
+                        filterFn: filterFn,
+                        keyGen: keyGen,
+                        skipCache: skipCache
+                    }]);
+
+                });
 
             // Make sure the filters are run when the user uses the back button
             $(window).on('pageload' + DOTNAMESPACE + data.guid, function () {
@@ -463,65 +463,65 @@
 
         // Events that actually do the sorting
         $table
-			.on('sort.' + NAMESPACE, function (e, options) {
-			    options = options || {};
+            .on('sort.' + NAMESPACE, function (e, options) {
+                options = options || {};
 
-			    var $target = $(e.target);
+                var $target = $(e.target);
 
-			    if (!$target.is('tbody,table')) {
-			        $target = $target.closest('tbody,table');
-			    }
+                if (!$target.is('tbody,table')) {
+                    $target = $target.closest('tbody,table');
+                }
 
-			    if ($target.is('table')) {
-			        $target = $target.find('tbody');
-			    }
+                if ($target.is('table')) {
+                    $target = $target.find('tbody');
+                }
 
-			    $target.each(function () {
-			        sortTBody(
-						 this,
-						 options.cellIndex,
-						 options.keyGen,
-						 options.sortFn,
-						 options.reverse,
-						 options.skipCache
-					);
-			    });
+                $target.each(function () {
+                    sortTBody(
+                         this,
+                         options.cellIndex,
+                         options.keyGen,
+                         options.sortFn,
+                         options.reverse,
+                         options.skipCache
+                    );
+                });
 
-			    $table.trigger('sorted', [$target, options]);
+                $table.trigger('sorted', [$target, options]);
 
-			})
-			.on('filter.' + NAMESPACE, function (e, filters) {
+            })
+            .on('filter.' + NAMESPACE, function (e, filters) {
 
-			    var $target = $(e.target);
+                var $target = $(e.target);
 
-			    if (!$target.is('tbody,table')) {
-			        $target = $target.closest('tbody,table');
-			    }
+                if (!$target.is('tbody,table')) {
+                    $target = $target.closest('tbody,table');
+                }
 
-			    if ($target.is('table')) {
-			        $target = $target.find('tbody');
-			    }
+                if ($target.is('table')) {
+                    $target = $target.find('tbody');
+                }
 
-			    $target.each(function () {
-			        filterTBody(
-						 this,
-						 filters
-					);
-			    });
+                $target.each(function () {
+                    filterTBody(
+                         this,
+                         filters
+                    );
+                });
 
-			    $table.trigger('filtered', [$target, options]);
+                $table.trigger('filtered', [$target, options]);
 
-			});
+            });
 
     }
 
     /**
-	 *	Gets or sets an attribute
-	 *	@param {DOMElement} el The element
-	 *	@param {String} name The name of the attribute.  Will automatically be prefixed with the namespace
-	 *	@param {String|Boolean} [value] The value to set to.  If true the value will be set to ''.  false will set it to "false"
-	 *	@returns {String|Boolean} If no attribute is present false.  If the attribute is empty true. Otherwise the value.
-	 */
+     *  Gets or sets an attribute
+     *  @param {DOMElement} el The element
+     *  @param {String} name The name of the attribute.  Will automatically be prefixed with the namespace
+     *  @param {String|Boolean} [value] The value to set to.  If true the value will be set to ''.  false will set it to "false"
+     *  @returns {String|Boolean} If no attribute is present false.  If the attribute is empty true. Otherwise the value.
+     */
     function attr(el, name, value) {
         var r = $.attr(el, ATTRIBUTEPREFIX + name, value === true ? '' : value);
         if (r === undefined) {
@@ -542,8 +542,8 @@
     }
 
     /**
-	 *	Guess the sort type by examining the first 3 non-empty cells of the first tbody
-	 */
+     *  Guess the sort type by examining the first 3 non-empty cells of the first tbody
+     */
     function guessSortType(table, cellIndex) {
         var rows = table.tBodies[0].rows;
         var i, j, test, cell, text;
@@ -569,8 +569,8 @@
     }
 
     /**
-	 *	Create a select filter for a column.
-	 */
+     *  Create a select filter for a column.
+     */
     function createSelectFilter(table, cellIndex) {
         var i, j;
         var values = {};
@@ -598,8 +598,8 @@
     }
 
     /**
-	 *	Find values for the select filter
-	 */
+     *  Find values for the select filter
+     */
     function searchTBodies(tbody, cellIndex) {
         var i, j, values = {}, rows = tbody.rows;
         for (i = 0, j = rows.length; i < j; ++i) {
@@ -610,10 +610,10 @@
     }
 
     /**
-	 *	Stable sorting is achived by converting the count of the row into a unicode character
-	 *	Normally we can use String.fromCharCode but
-	 *	after 65535 rows we need to use two or more characters. 
-	 */
+     *  Stable sorting is achived by converting the count of the row into a unicode character
+     *  Normally we can use String.fromCharCode but
+     *  after 65535 rows we need to use two or more characters. 
+     */
     function getLargeStableSortKey(i) {
         var r = '';
         var base = i;
@@ -628,14 +628,14 @@
     }
 
     /**
-	 *	Sort a tbody
-	 *	@param {HTMLTableSectionElement} tBody to sort
-	 *	@param {Integer} cellIndex to sort on.  If not supplied the tbody will be resorted into the original order
-	 *	@param {Function} keyGen Key generator.  It not supplied text will be used
-	 *	@param {Function} sortFn Function to sort with.  If not supplied the standard string based system will be used
-	 *	@param {Boolean} reverse If true reverse the sort
-	 *	@param {Boolean} skipCache If true do not use cached keys
-	 */
+     *  Sort a tbody
+     *  @param {HTMLTableSectionElement} tBody to sort
+     *  @param {Integer} cellIndex to sort on.  If not supplied the tbody will be resorted into the original order
+     *  @param {Function} keyGen Key generator.  It not supplied text will be used
+     *  @param {Function} sortFn Function to sort with.  If not supplied the standard string based system will be used
+     *  @param {Boolean} reverse If true reverse the sort
+     *  @param {Boolean} skipCache If true do not use cached keys
+     */
     function sortTBody(tbody, cellIndex, keyGen, sortFn, reverse, skipCache) {
 
         var i, j, row, key, cell;
@@ -717,8 +717,8 @@
     }
 
     /**
-	 *	Reverse a tbody.  Quicker than sorting.
-	 */
+     *  Reverse a tbody.  Quicker than sorting.
+     */
     function reverseTBody(tbody) {
         var rows = tbody.rows;
         var row;
@@ -736,8 +736,8 @@
     }
 
     /**
-	 *	Filter a tbody
-	 */
+     *  Filter a tbody
+     */
     function filterTBody(tbody, filter, limitToRowsSet) {
         var i, j, row, m, n, hide, hideCell, cell, key;
 
