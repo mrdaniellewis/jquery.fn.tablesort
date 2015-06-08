@@ -46,7 +46,7 @@
         },
         /** Item is in a comma separated list */
         inList: function(key, text) {
-            return text.toLowerCase().split(rComma).indexOf(key) > -1;
+            return key.split(rComma).indexOf(text.toLowerCase()) > -1;
         },
         /** Field contains each space separated token */
         hasEach: function (key, text) {
@@ -615,7 +615,7 @@
         var rows = tbody.rows;
 
         function addValue(value) {
-            values[value] = true;
+            values[value.trim()] = true;
         }
 
         for (i = 0, j = rows.length; i < j; ++i) {
