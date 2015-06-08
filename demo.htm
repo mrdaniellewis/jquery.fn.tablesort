@@ -5,6 +5,12 @@
 
 	<style>
 
+		body { font:1.3em/1.5 sans-serif;}
+
+		table { border-collapse: collapse;}
+		table th, table td { padding: .2em; vertical-align: top; border: 1px solid #ddd;}
+		table th { background: #ddd; text-align: left;}
+
 	</style>
 
 	<link rel="stylesheet" href="tablesort.css">
@@ -12,47 +18,159 @@
 <body>
 	<h1>Table sort demo</h1>	
 
-	<h2>Sortable columns</h2>
-
-	<table class="sortable">
-		<thead>
+	
+        <div>
+			<h2>Sortable table</h2>
+			<table class="sortable" border="0">
+			<thead>
+			<tr><th>Text</th><th>Number</th><th>Date (dd/mm/yyyy)</th><th>Date (dmmmy)</th><th>Date (mmmdy)</th><th data-tablesort-nosort="">Sort disabled</th></tr>
+			</thead>
+			<tbody>
 			<tr>
-				<th>String
-				<th>Number
-				<th>Date (ddmmyyyy)
-				<th>Date (mmddyyyy)
-				<th>Date (dmmmy)
-				<th>Date (mmmdy)
-				<th>Date (iso)
-		</thead>
-		<tbody>
+			<td>Lorem</td>
+			<td>1</td>
+			<td>23/01/1981</td>
+			<td>5 January 2015</td>
+			<td>January 5 2015</td>
+			<td>Lorem</td>
+			</tr>
 			<tr>
-				<td>
-				<td>
-				<td>
-				<td>
-				<td>
-				<td>
-				<td>
-		</tbody>
-
-	</table>
-
-	<h2>Filtered columns</h2>
-
-
-	<h2>Custom sorting</h2>
-
-
-	<h2>Other stuff to test</h2>
-	<ul>
-		<li>Automatic creation of a thead
-		<li>Complex thead
-		<li>Mulitple tbody
-		<li>tfoot
-		<li>Complex cell content
-	</ul>
-
+			<td>ipsum</td>
+			<td>1000</td>
+			<td>4/5/2015</td>
+			<td>06 January 2015</td>
+			<td>January 06 2015</td>
+			<td>ipsum</td>
+			</tr>
+			<tr>
+			<td>dolor</td>
+			<td>1e5</td>
+			<td>3/2/82</td>
+			<td>7 Jan 2015</td>
+			<td>Jan 7 2015</td>
+			<td>dolor</td>
+			</tr>
+			<tr>
+			<td>sit</td>
+			<td>.5</td>
+			<td>&nbsp;</td>
+			<td>8 jan 15</td>
+			<td>jan 8 15</td>
+			<td>sit</td>
+			</tr>
+			<tr>
+			<td>&nbsp;</td>
+			<td>0.7</td>
+			<td>29/2/2004</td>
+			<td>&nbsp;</td>
+			<td>&nbsp;</td>
+			<td>&nbsp;</td>
+			</tr>
+			<tr>
+			<td>amet</td>
+			<td>10,000,000</td>
+			<td>5/5/2015</td>
+			<td>1 April 2012</td>
+			<td>April 1 2012</td>
+			<td>amet</td>
+			</tr>
+			<tr>
+			<td>consectetur</td>
+			<td>&nbsp;</td>
+			<td>6/5/2015</td>
+			<td>5 may 82</td>
+			<td>may 5 82</td>
+			<td>consectetur</td>
+			</tr>
+			<tr>
+			<td>adipiscing</td>
+			<td>245.67</td>
+			<td>01/02/2015</td>
+			<td>29 feb 2004</td>
+			<td>feb 29 2004</td>
+			<td>adipiscing</td>
+			</tr>
+			<tr>
+			<td>elit</td>
+			<td>-29</td>
+			<td>29/12/2014</td>
+			<td>34 march 2015</td>
+			<td>march 34 2015</td>
+			<td>elit</td>
+			</tr>
+			<tr>
+			<td>sed</td>
+			<td>-2323.34e-3</td>
+			<td>34/03/2015</td>
+			<td>12 september 2015</td>
+			<td>september 12 2015</td>
+			<td>sed</td>
+			</tr>
+			</tbody>
+			</table>
+			<h2>Table with a search</h2>
+			<table class="sortable" border="0">
+			<thead>
+			<tr><th data-tablesort-filter="">Search</th><th data-tablesort-filter="" data-tablesort-filter-fn="hasEach">Multiple term search</th><th data-tablesort-select="">Dropdown</th><th data-tablesort-select="multiple">Multiple term dropdown</th></tr>
+			</thead>
+			<tbody>
+			<tr>
+			<td>Lorem ipsum dolor sit amet</td>
+			<td>Acid green,</td>
+			<td>Melon</td>
+			<td>Melon, Ming, Moss Green</td>
+			</tr>
+			<tr>
+			<td>Consectetur adipiscing elit</td>
+			<td>Dark Tangerine</td>
+			<td>Ming</td>
+			<td>Ming</td>
+			</tr>
+			<tr>
+			<td>Sed do eiusmod tempor incididunt ut labore et</td>
+			<td>Dark Vanilla</td>
+			<td>Mindaro</td>
+			<td>Mindaro</td>
+			</tr>
+			<tr>
+			<td>Ut enim ad minim veniam&nbsp;</td>
+			<td>Deep Carrot</td>
+			<td>Mindaro</td>
+			<td>Mindaro Dark, Ming</td>
+			</tr>
+			<tr>
+			<td>Quis nostrud exercitation ullamco laboris nisi ut</td>
+			<td>Dogwood Rose</td>
+			<td>Melon</td>
+			<td>Moutbatten Pink</td>
+			</tr>
+			<tr>
+			<td>Duis aute irure dolor in reprehenderit</td>
+			<td>Electric Ultramarine</td>
+			<td>&nbsp;</td>
+			<td>Fushsia, Ming</td>
+			</tr>
+			<tr>
+			<td>In voluptate velit esse cillum dolore eu fugiat</td>
+			<td>Fuzzy Wuzzy</td>
+			<td>Mint</td>
+			<td>&nbsp;</td>
+			</tr>
+			<tr>
+			<td>Nulla pariatur</td>
+			<td>Grape</td>
+			<td>Mindaro Dark, Mint</td>
+			<td>&nbsp;Moss Green, Fushia, Ming</td>
+			</tr>
+			<tr>
+			<td>Excepteur sint occaecat</td>
+			<td>Liver Chestnut</td>
+			<td>Mint</td>
+			<td>&nbsp;Melon, Moss Green</td>
+			</tr>
+			</tbody>
+			</table>
+		</div>  
 
 	<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
 	<script src="tablesort.js"></script>
